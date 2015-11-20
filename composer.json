@@ -1,0 +1,9 @@
+{
+  "require" : {
+	"phpdr.net/curlmulti":"1.*",
+    "phpdr.net/php-yaf-library" : "1.*"
+  },
+  "config" : {
+    "vendor-dir" : "app/library/vendor"
+  }
+}
