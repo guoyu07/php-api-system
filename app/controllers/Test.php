@@ -1,7 +1,8 @@
 <?php
+use Ares333\CurlMulti\Core;
 class TestController extends Yaf_Controller_Abstract {
 	function httpsAction() {
-		$curl = new CurlMulti_Core ();
+		$curl = new Core();
 		$curl->add ( array (
 				'url' => 'https://www.zu-ba.com:82',
 				'opt' => array (

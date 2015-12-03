@@ -1,5 +1,5 @@
 <?php
-use Ares333\Error;
+use Ares333\YafLib\Error;
 class ApiController extends Yaf_Controller_Abstract {
 	function androidAction() {
 		$this->process ();

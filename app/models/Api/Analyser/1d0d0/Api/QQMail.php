@@ -36,63 +36,6 @@ class Api_Analyser_1d0d0_Api_QQMailModel extends Api_Analyser_1d0d0_AbstractMode
 	}
 	function analyse($param) {
 		$this->checkLogin ();
-		$res = '';
-		if (! empty ( $param ['res'] )) {
-			$res = json_decode ( $param ['res'], true );
-		}
-		if (empty ( $res )) {
-			$this->methodException ( 'res is empty', 0 );
-		}
-		$task = array ();
-		foreach ( $res as $v ) {
-			if (empty ( $v ['url'] )) {
-				$this->methodException ( 'url is empty', 1 );
-			}
-			$content = '';
-			if (! empty ( $v ['content'] )) {
-				$content = $v ['content'];
-			}
-			$args = '';
-			if (! empty ( $v ['args'] )) {
-				$args = $v ['args'];
-			}
-			$url = trim ( $v ['url'] );
-			$table = Table_ContentModel::getInstance ();
-			$row = $table->fetchRow ( array (
-					'type=?' => 'qqmail',
-					'md5=?' => md5 ( $url )
-			) );
-			if (! isset ( $row )) {
-				$row = $table->createRow ();
-			}
-			$row->setFromArray ( array (
-					'username' => $this->getSession ()->get ( 'username' ),
-					'type' => 'qqmail',
-					'md5' => md5 ( $url ),
-					'url' => $url,
-					'content' => $content,
-					'args' => serialize ( $args ),
-					'createTime' => date ( 'Y-m-d H:i:s' )
-			) );
-			$row->save ();
-			if (empty ( $args ['type'] )) {
-				$this->methodException ( 'type is empty', 2 );
-			}
-			$type = $args ['type'];
-			switch ($type) {
-				case self::TYPE_INIT :
-					$task [] = $this->parseInit ( array (
-							'url' => $url
-					) );
-					break;
-				case self::TYPE_LIST_INIT :
-					break;
-				default :
-					$this->methodException ( 'type is invalid, type=' . $type, 2 );
-					break;
-			}
-		}
-		return $task;
 	}
 	private function parseInit(array $r) {
 		$url = $r ['url'];

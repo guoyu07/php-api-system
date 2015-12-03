@@ -1,6 +1,6 @@
 {
   "require" : {
-	"phpdr.net/curlmulti":"1.*",
+	"phpdr.net/php-curlmulti":"2.*",
     "phpdr.net/php-yaf-library" : "1.*"
   },
   "config" : {

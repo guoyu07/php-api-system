@@ -1,5 +1,5 @@
 <?php
-use Ares333\Session;
+use Ares333\YafLib\Session;
 class Api_Spider_1d0d0_AbstractModel extends AbstractModel {
 	/**
 	 * 用户函数中的异常
